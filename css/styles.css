@@ -1,0 +1,77 @@
+#gamePage {
+    margin: 25px auto;
+    text-align: center;
+}
+
+#game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    margin: 0;
+}
+
+#canvas {
+    margin: 0 auto;
+}
+
+#startButton {
+    width: 200px;
+    margin-top: 16px;
+}
+
+#logoutButton {
+  width: 200px;
+  margin-top: 16px;
+}
+
+* {box-sizing: border-box}
+
+.container {
+  padding: 16px;
+  width: 500px;
+  margin: 0 auto;
+}
+
+form{
+	margin-bottom:50px;
+}
+
+.left {
+  float: left;
+  width: 45%;
+}
+
+.right {
+  float: right;
+  width: 45%;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 20px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}

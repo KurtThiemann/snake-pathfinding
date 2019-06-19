@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>IT-Sommerfest 2019 SNAKE</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="jquery_mobile/jquery.mobile.structure-1.4.5.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+<section id="mainSection">
+    <div id="gamePage" data-role="page">
+        <h1>IT-Sommerfest 2019 SNAKE</h1>
+        <div id="game">
+            <button id="startButton" type="button" onclick="gameController.start()">Start</button>
+            <canvas id="canvas" width="600" height="600"></canvas>
+            <input type="range" min="0" max="500" value="40" id="gameSpeed">
+        </div>
+    </div>
+</section>
+
+<script src="jquery_mobile/jquery-1.11.1.min.js"></script>
+<script>//prevent override of styles through jquery mobile
+$(document).bind('mobileinit', function () {
+    $.mobile.page.prototype.options.keepNative = "select,input";
+});
+</script>
+<script src="jquery_mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="javascript/index.js"></script>
+<script src="javascript/game.js"></script>
+<script src="javascript/gameLoop.js"></script>
+<script src="javascript/userInput.js"></script>
+<script src="javascript/view.js"></script>
+<script src="javascript/gameController.js"></script>
+<script type="text/javascript">
+</script>
+</body>
+
+</html>
