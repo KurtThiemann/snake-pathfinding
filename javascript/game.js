@@ -66,7 +66,7 @@ class Game{
     findPath(start, dest, panic, baseSnakeTiles = this.snake.tiles){
         const game = this;
         let fields = [];
-        function find(path, snakeTiles = baseSnakeTiles, openFields = []){
+        function find(path, snakeTiles = baseSnakeTiles, blockedFields = fields){
             let pos = path[path.length - 1];
             let diff = new Vector2(dest.x - pos.x, dest.y - pos.y);
             let directions = [];
@@ -78,6 +78,7 @@ class Game{
                 return (b[0] - a[0]) * (panic ? -1 : 1);
             });
             fields.push(pos);
+            blockedFields.push(pos);
             if(pos.equals(dest)){
                 return path;
             }
@@ -87,7 +88,7 @@ class Game{
                 let newSnakeTiles = snakeTiles.slice();
                 let newField = (new Vector2(path[path.length - 1])).add(dir).overflow(game.size); //allow crossing game borders
                 //let newField = (new Vector2(path[path.length - 1])).add(dir); //don't allow crossing game borders
-                if(!newField.inArray(openFields) && newField.inArray(fields)){
+                if(newField.inArray(blockedFields)){
                     continue;
                 }
                 let fieldType = game.getFieldType(newField, newSnakeTiles);
@@ -96,14 +97,17 @@ class Game{
                 }
                 newSnakeTiles.unshift(newField);
                 if(newSnakeTiles.length){
-                    openFields.push(newSnakeTiles.pop());
+                    let i = blockedFields.indexOf(newSnakeTiles.pop());
+                    if(i !== -1){
+                        delete blockedFields[i];
+                    }
                 }
                 newPath.push(newField);
-                if(newPath.length > game.size.x * game.size.y){
+                if(newPath.length > game.size.x * (game.size.y / 4)){
                     console.log('path length');
                     return false;
                 }
-                let p = find(newPath, newSnakeTiles, openFields);
+                let p = find(newPath, newSnakeTiles, blockedFields);
                 if(p){
                     return p;
                 }
