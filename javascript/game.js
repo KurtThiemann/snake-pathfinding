@@ -101,7 +101,7 @@ class Game{
                 newPath.push(newField);
                 if(newPath.length > game.size.x * game.size.y){
                     console.log('path length');
-                    continue;
+                    return false;
                 }
                 let p = find(newPath, newSnakeTiles, openFields);
                 if(p){
